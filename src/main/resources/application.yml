@@ -1,0 +1,29 @@
+#SERVER
+server:
+  port: 3527
+  servlet:
+    context-path: "/"
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+
+#Logging
+logging:
+  level:
+    org.springframework: info
+    org.springframework.web: debug
+
+
+spring:
+  #H2
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:tcp://localhost/~/test
+#    username: sa
+#    password:
+  #JPA
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
