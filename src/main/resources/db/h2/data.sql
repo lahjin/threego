@@ -1,0 +1,1 @@
+INSERT INTO user VALUES (1, 'test', '$2a$10$3fS/jH.Z6zQc08vyCvVsD.gWoh.sKzVfRGFjGKCBN3cj2htipjMM.');
