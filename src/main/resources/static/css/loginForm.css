@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,
+body{
+    width: 100%;
+    height: 100%;
+}
+
+.admin_wrap{
+    width: 100%;
+    height: 100%;
+    background-color: #ECF1FF;
+}
+
+.loginForm_wrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginForm_header{
+    margin: 20px;
+    padding: 15px;
+}
+
+.threego_logo{
+    text-align: center;
+}
+
+.loginForm_content{
+    margin: 5px;
+    width: 340px;
+}
+
+.threego_forAdmin{
+    margin: 15px 5px;
+    text-align: center;
+}
+
+.loginForm_error{
+    margin: 5px;
+    height: 50px;
+    display: none;
+    border: 1px solid rgb(239,27,38);
+    border-radius: 5px;
+    background-color: rgba(239, 27, 38, 0.45);
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.1em;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid rgba(31, 40, 58, 0.45);
+    border-radius: 5px;
+    background-color: white;
+}
+
+.loginForm > div{
+    margin-top: 2px;
+    margin-bottom: 3px;
+    width: 100%;
+}
+
+.lgf_label{
+    margin-bottom: 5px;
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.lgf_input{
+    margin-bottom: 5px;
+    display: block;
+    width: calc(100% - 16px);
+    height: 30px;
+    padding: 2px 8px;
+    font-size: 14px;
+}
+
+.lgf_btn{
+    width: 100%;
+    height: 35px;
+    background-color: rgba(173, 219, 230, 0.8);
+    border: 1px solid #E9F6F8;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.lgf_btn:hover{
+    cursor: pointer;
+    background-color: rgb(173, 219, 230);
+}

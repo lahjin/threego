@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="default_layout(title,links,content)">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="${title}">Threego layout for Administrator</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/defaultLayout.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aside.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/notification.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <script src="https://kit.fontawesome.com/c43a3bd0d6.js" crossorigin="anonymous"></script>
+    <script th:src="@{/js/clock.js}" defer></script>
+
+    <th:block th:replace="${links}"/>
+</head>
+<body>
+    <div class="wrap">
+        <div class="wrap_main">
+            <div th:replace="~{fragments/aside :: common_aside}"></div>
+            <div class="wrap_board">
+                <div th:replace="~{/fragments/header :: common_header}"></div>
+                <div class="wrap_content">
+                    <div th:replace="${content}"></div>
+                    <div th:replace="~{/fragments/notification :: common_notification}"></div>
+                </div>
+                <div th:replace="~{/fragments/footer :: common_footer}"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

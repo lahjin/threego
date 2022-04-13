@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aside.css}" href="../../static/css/aside.css">
+    <script src="https://kit.fontawesome.com/c43a3bd0d6.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <aside class="aside" th:fragment="common_aside">
+        <div class="threego_logo">
+            <a href="/">Threego</a>
+            <span>For Administrator</span>
+        </div>
+        <div class="clock">
+            <ul>
+                <li><span id="today_year">2022년</span></li>
+                <li><span id="today_date">04월 09일 토요일</span></li>
+                <li><span id="today_time">오전 04시 09분</span></li>
+            </ul>
+        </div>
+        <hr class="hr-line"/>
+        <nav class="main_nav">
+            <ul>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">대시보드</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">코스관리</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">가격관리</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">리뷰관리</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">공지사항</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">문의사항</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">회원관리</a></span></li>
+            </ul>
+            <hr class="hr-line" />
+            <ul>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">직원관리</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">권한관리</a></span></li>
+            </ul>
+        </nav>
+    </aside>
+</body>
+</html>

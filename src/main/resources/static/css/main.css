@@ -1,0 +1,10 @@
+.section-main > div{
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid #ECF1FF;
+}
+
+.section-main > div:not(:last-child){
+    margin-bottom: 15px;
+}

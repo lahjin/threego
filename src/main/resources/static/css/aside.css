@@ -1,0 +1,63 @@
+.hr-line{
+    margin: 0 auto;
+    width: 95%;
+}
+
+.aside{
+    display: inline-block;
+    width: 215px;
+    padding: 32px;
+    background-color: #ECF1FF;
+    border-right: 1px solid #f1f3f5;
+}
+
+.threego_logo{
+    padding: 0 10px 0 10px;
+}
+
+.threego_logo > a{
+    margin: 10px 0 5px 0;
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.threego_logo > span{
+    margin: 5px 0 10px 0;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.clock{
+    display: flex;
+    flex-direction: column;
+}
+
+.clock > ul > li{
+    margin: 5px 0 5px 0;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+}
+
+.main_nav{
+    margin: 20px 0 20px 0;
+    width: 100%;
+}
+
+.main_nav > ul > li {
+    margin: 15px 0 5px 0;
+    padding: 0 10px 0 10px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.main_nav > ul > li > i{
+    width: 50px;
+    font-size: 16px;
+}
+
+.main_nav > ul > li > span{
+    font-size: 14px;
+    cursor: pointer;
+}

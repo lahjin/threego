@@ -1,0 +1,39 @@
+.notification{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    width: 55px;
+    border-left: 1px solid #EFF2F5;
+}
+
+.notification > div > ul > li{
+    margin: 10px 0 5px 0;
+}
+
+.alarm{
+    border-bottom: 2px solid #EFF2F5;
+}
+
+.notification > div > ul div{
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 30px;
+    background-color: #F3F6F8;
+    border-radius: 5px;
+}
+
+.notification > div > ul  div:hover{
+    background-color: #ECF1FF;
+}
+
+.notification > div > ul a {
+    color: #5E6278;
+}
+
+.notification > div > ul a:hover {
+    color: #ADDBE6;
+}

@@ -1,0 +1,47 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 55px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #EFF2F5;
+}
+
+.header > div > ul{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.header > div > ul > li {
+    color: #5E6278;
+    text-align: center;
+}
+
+.header-nav > ul > li {
+    padding: 15px;
+    font-size: 12px;
+}
+
+.header-account > ul > li {
+    padding: 10px;
+    font-size: 14px;
+}
+
+#selectTitle{
+    width: 120px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.delimiter{
+    margin: 0;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 50%;
+    border-left: 2px solid #ECF1FF;
+}
+
+.header > div > ul > li  a{
+    color: #5E6278;
+}
