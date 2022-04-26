@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
 }
+
 html,
 body{
     width: 100%;
@@ -44,11 +45,22 @@ body{
 .loginForm_error{
     margin: 5px;
     height: 50px;
-    display: none;
     border: 1px solid rgb(239,27,38);
     border-radius: 5px;
     background-color: rgba(239, 27, 38, 0.45);
     color: white;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.1em;
+}
+
+.loginForm_logout{
+    margin: 5px;
+    height: 50px;
+    border: 1px solid #caf1d4;
+    border-radius: 5px;
+    background-color: #D4EDDB;
+    color: #6cad80;
     text-align: center;
     line-height: 50px;
     font-size: 1.1em;

@@ -18,8 +18,8 @@
         </div>
         <div class="header-account">
             <ul>
-                <li><span>관리자</span></li>
-                <li><span>김영준</span></li>
+                <li><span sec:authentication="principal.authorities">관리등급</span></li>
+                <li><span sec:authentication="principal.nickname">닉네임</span></li>
             </ul>
         </div>
     </header>

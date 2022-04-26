@@ -2,25 +2,20 @@ package com.kkultrip.threego.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
+@Order(2)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final CorsConfig corsConfig;
-
-    public SecurityConfig(CorsConfig corsConfig) {
-        this.corsConfig = corsConfig;
-    }
-
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
@@ -30,29 +25,39 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/h2-console/**",
                         "/favicon.ico",
-                        "/error"
+                        "/error",
+                        "/css/**",
+                        "/js/**"
                 );
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .addFilter(corsConfig.corsFilter())
+                // csrf 비활성화
                 .csrf().disable()
 
-                // 세션 사용 안함
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-
-                //페이지 접근 권한
-                .and()
+                // /** (모든경로) 접근 설정 /login 만 허용하고 나머지는 인증없이는 접근 불가
+                .antMatcher("/**")
                 .authorizeRequests()
-                .anyRequest().permitAll()
+                .antMatchers("/login").permitAll()
+                .anyRequest().authenticated()
+
+                // 기본 Form 형식의 로그인 로직 사용 /login 으로 POST 처리 후 성공 시 "/" 으로 이동
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/")
+
+                // 로그아웃시 세션 삭제 및 쿠키 삭제
+                .and()
+                .logout()
+                .invalidateHttpSession(true).deleteCookies("JSESSIONID")
 
                 // h2-console frame 관련 오류 방지
                 .and()
                 .headers()
                 .frameOptions()
                 .sameOrigin();
-
     }
 }

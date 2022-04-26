@@ -14,38 +14,16 @@ logging:
     org.springframework: info
     org.springframework.web: debug
 
-database: h2
+
 
 spring:
-  # H2 database local install ver.
-#  datasource:
-#    driver-class-name: org.h2.Driver
-#    url: jdbc:h2:tcp://localhost/~/test
-#    username: sa
-#    password:
+  # Profiles
+  profiles:
+    include: dev
+  messages:
+    encoding: UTF-8
+    basename: messages/messages
 
-  # H2 database embedded ver.
-  h2:
-    console:
-      enabled: true
-
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test
-    username: sa
-    password:
-
-  # test database init
-  sql:
-    init:
-      schema-locations: classpath*:db/${database}/schema.sql
-      data-locations: classpath*:db/${database}/data.sql
-      mode: always
-
-  # JPA
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: none
-    show-sql: true
-    defer-datasource-initialization: true
+jwt:
+  secret: a2t1bHRyaXAtY2Fwc3RvbmUtZGVzaWduLXByb2plY3QtdGhyZWVnby1qd3Qtc2VjcmV0LWtleQ==
+  exp: 30

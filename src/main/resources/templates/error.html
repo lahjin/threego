@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ThreeGo Error</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/error.css}">
+    <script src="https://kit.fontawesome.com/c43a3bd0d6.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="wrap">
+        <span class="error_oops">Oops!</span>
+        <div class="error_border">
+            <div class="error_message">
+                <span>Error</span>
+                <span th:text="${status}">에러 코드</span>
+            </div>
+            <span class="error_content" th:text="${error}">에러 내용</span>
+            <div class="error_anchor">
+                <div class="icon_box">
+                    <a href="javascript:history.back()"><i class="fa-solid fa-rotate-left"></i></a>
+                </div>
+                <div class="icon_box">
+                    <a href="/"><i class="fa-solid fa-house-chimney"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

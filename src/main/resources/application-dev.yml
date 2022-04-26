@@ -1,0 +1,38 @@
+database: h2
+
+spring:
+  thymeleaf:
+  cache: false
+
+  # H2 database local install ver.
+  #  datasource:
+  #    driver-class-name: org.h2.Driver
+  #    url: jdbc:h2:tcp://localhost/~/test
+  #    username: sa
+  #    password:
+
+  # H2 database embedded ver.
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+
+  # test database init
+  sql:
+    init:
+      #      schema-locations: classpath*:db/${database}/schema.sql
+      data-locations: classpath*:db/${database}/data.sql
+      mode: always
+
+  # JPA
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    defer-datasource-initialization: true
