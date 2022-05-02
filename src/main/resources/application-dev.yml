@@ -25,7 +25,7 @@ spring:
   # test database init
   sql:
     init:
-      #      schema-locations: classpath*:db/${database}/schema.sql
+      schema-locations: classpath*:db/${database}/schema.sql
       data-locations: classpath*:db/${database}/data.sql
       mode: always
 
@@ -33,6 +33,6 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     show-sql: true
     defer-datasource-initialization: true
