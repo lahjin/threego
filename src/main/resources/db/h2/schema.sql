@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `user-profile` (
 );
 
 CREATE TABLE IF NOT EXISTS `loginLog` (
-                              `id` bigint NOT NULL PRIMARY KEY ,
+                              `id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY ,
                               `user_id`	bigint	NOT NULL ,
                               `ip` varchar(255) NOT NULL ,
                               `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `loginLog` (
 );
 
 CREATE TABLE IF NOT EXISTS `category` (
-                            `id`	bigint	NOT NULL PRIMARY KEY ,
+                            `id`	bigint	NOT NULL AUTO_INCREMENT PRIMARY KEY ,
                             `name`	varchar(255)	NOT NULL
 );
 
@@ -88,8 +88,8 @@ CREATE TABLE IF NOT EXISTS `review` (
                           `content`	varchar(255)	NOT NULL,
                           `date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
                           `count`	int	NOT NULL,
-                          `like`	int	NOT NULL,
-                          `dislike`	int	NOT NULL,
+                          `good`	int	NOT NULL,
+                          `bad`	int	NOT NULL,
                           `point`	varchar(255)	NOT NULL,
                           `active`	boolean	NOT NULL	DEFAULT TRUE,
                           FOREIGN KEY (user_id)
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `review-images` (
                                  REFERENCES review(id)
 );
 
-CREATE TABLE IF NOT EXISTS `review_likes` (
+CREATE TABLE IF NOT EXISTS `review_good` (
                                 `review_id`	bigint	NOT NULL,
                                 `user_id`	bigint	NOT NULL,
                                 PRIMARY KEY (review_id, user_id),
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `review_likes` (
                                 REFERENCES user(id)
 );
 
-CREATE TABLE IF NOT EXISTS `review_dislikes` (
+CREATE TABLE IF NOT EXISTS `review_bad` (
                                 `review_id`	bigint	NOT NULL,
                                 `user_id`	bigint	NOT NULL,
                                 PRIMARY KEY (review_id, user_id),
