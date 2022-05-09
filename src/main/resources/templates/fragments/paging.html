@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Paging</title>
+</head>
+<body>
+    <div class="paging" th:fragment="paging">
+        <ul id="paging_index">
+            <li th:if="${page.isPrev}"><a th:href="@{/notice(pageIndex=${page.pageIndex}-1)}"><</a></li>
+            <li th:each="num : ${#numbers.sequence(page.startPage,page.endPage)}">
+                <a th:href="${page.isSearch} ?  @{/notice(pageIndex=${num}, searchCondition=${page.searchCondition}, searchKeyword=${page.searchKeyword})} : @{/notice(pageIndex=${num})}" th:text="${num}" th:classappend="${num == page.pageIndex} ? 'current_page' : '' "></a>
+            </li>
+            <li th:if="${page.isNext}"><a th:href="@{/notice(pageIndex=${page.pageIndex}+1)}">></a></li>
+        </ul>
+    </div>
+    <div th:fragment="paging_info">
+        <h1 th:text="'pageIndex =' + ${page.pageIndex}"></h1>
+        <h1 th:text="'indexSize = ' + ${page.indexSize}"></h1>
+        <h1 th:text="'pageSize = ' + ${page.pageSize}"></h1>
+        <h1 th:text="'indexCount = ' + ${page.indexCount}"></h1>
+        <h1 th:text="'pageCount = ' + ${page.pageCount}"></h1>
+        <h1 th:text="'startPage = ' + ${page.startPage}"></h1>
+        <h1 th:text="'endPage = ' + ${page.endPage}"></h1>
+        <h1 th:text="'isPrev = ' + ${page.isPrev}"></h1>
+        <h1 th:text="'isNext = ' + ${page.isNext}"></h1>
+        <h1 th:text="'searchKeyword = ' + ${page.searchKeyword}"></h1>
+        <h1 th:text="'searchCondition = ' + ${page.searchCondition}"></h1>
+        <h1 th:text="'isSearch = ' + ${page.isSearch}"></h1>
+    </div>
+</body>
+</html>
