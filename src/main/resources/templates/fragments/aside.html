@@ -8,7 +8,7 @@
 <body>
     <aside class="aside" th:fragment="common_aside">
         <div class="threego_logo">
-            <a href="/">Threego</a>
+            <a href="/" th:text="#{title}">ThreeGo</a>
             <span>For Administrator</span>
         </div>
         <div class="clock">
@@ -21,18 +21,18 @@
         <hr class="hr-line"/>
         <nav class="main_nav">
             <ul>
-                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">대시보드</a></span></li>
-                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">코스관리</a></span></li>
-                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">가격관리</a></span></li>
-                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">리뷰관리</a></span></li>
-                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">공지사항</a></span></li>
-                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">문의사항</a></span></li>
-                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">회원관리</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#" th:text="#{menu.dashboard}">대시보드</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#" th:text="#{menu.place}">장소관리</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#" th:text="#{menu.tour}">관광관리</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#" th:text="#{menu.review}">리뷰관리</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#" th:text="#{menu.notice}">공지사항</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#" th:text="#{menu.ask}">문의사항</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#" th:text="#{menu.user}">회원관리</a></span></li>
             </ul>
             <hr class="hr-line" />
             <ul>
-                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">직원관리</a></span></li>
-                <li><i class="fa-solid fa-caret-right"></i><span><a href="#">권한관리</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#" th:text="#{menu.staff}">직원관리</a></span></li>
+                <li><i class="fa-solid fa-caret-right"></i><span><a href="#" th:text="#{menu.auth}">권한관리</a></span></li>
             </ul>
         </nav>
     </aside>
