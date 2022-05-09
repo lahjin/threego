@@ -50,14 +50,14 @@ public class Page {
      * @param indexCount (총 인덱스 수)
      */
     public Page(int pageIndex, int indexSize, int indexCount) {
-        this.pageIndex = pageIndex;
         this.indexSize = indexSize;
         this.indexCount = indexCount;
         this.pageCount = (int) Math.ceil(indexCount / (double) indexSize);
-        this.startPage = ((pageIndex-1) / pageSize) * pageSize + 1;
+        this.pageIndex = pageIndex > this.pageCount || pageIndex < 1 ? 1 : pageIndex;
+        this.startPage = ((this.pageIndex-1) / pageSize) * pageSize + 1;
         this.endPage = Math.min(startPage + pageSize - 1, pageCount);
-        this.isPrev = pageIndex > 1;
-        this.isNext = pageIndex < pageCount;
+        this.isPrev = this.pageIndex > 1;
+        this.isNext = this.pageIndex < pageCount;
     }
 
     /**
@@ -70,14 +70,14 @@ public class Page {
      */
 
     public Page(int pageIndex, int indexSize, int indexCount, String searchCondition, String searchKeyword) {
-        this.pageIndex = pageIndex;
         this.indexSize = indexSize;
         this.indexCount = indexCount;
         this.pageCount = (int) Math.ceil(indexCount / (double) indexSize);
-        this.startPage = ((pageIndex-1) / pageSize) * pageSize + 1;
+        this.pageIndex = pageIndex > this.pageCount || pageIndex < 1 ? 1 : pageIndex;
+        this.startPage = ((this.pageIndex-1) / pageSize) * pageSize + 1;
         this.endPage = Math.min(startPage + pageSize - 1, pageCount);
-        this.isPrev = pageIndex > 1;
-        this.isNext = pageIndex < pageCount;
+        this.isPrev = this.pageIndex > 1;
+        this.isNext = this.pageIndex < pageCount;
         this.searchCondition = searchCondition;
         this.searchKeyword = searchKeyword;
         this.isSearch = true;

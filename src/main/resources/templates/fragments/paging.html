@@ -6,12 +6,12 @@
 </head>
 <body>
     <div class="paging" th:fragment="paging">
-        <ul id="paging_index">
-            <li th:if="${page.isPrev}"><a th:href="@{/notice(pageIndex=${page.pageIndex}-1)}"><</a></li>
+        <ul id="paging_index" th:with="url=${#httpServletRequest.requestURI}">
+            <li th:if="${page.isPrev}"><a th:href="${page.isSearch} ?  @{${url}(pageIndex=${page.pageIndex} - 1, searchCondition=${page.searchCondition}, searchKeyword=${page.searchKeyword})} : @{${url}(pageIndex=${page.pageIndex}-1)}"><</a></li>
             <li th:each="num : ${#numbers.sequence(page.startPage,page.endPage)}">
-                <a th:href="${page.isSearch} ?  @{/notice(pageIndex=${num}, searchCondition=${page.searchCondition}, searchKeyword=${page.searchKeyword})} : @{/notice(pageIndex=${num})}" th:text="${num}" th:classappend="${num == page.pageIndex} ? 'current_page' : '' "></a>
+                <a th:href="${page.isSearch} ?  @{${url}(pageIndex=${num}, searchCondition=${page.searchCondition}, searchKeyword=${page.searchKeyword})} : @{${url}(pageIndex=${num})}" th:text="${num}" th:classappend="${num == page.pageIndex} ? 'current_page' : '' "></a>
             </li>
-            <li th:if="${page.isNext}"><a th:href="@{/notice(pageIndex=${page.pageIndex}+1)}">></a></li>
+            <li th:if="${page.isNext}"><a th:href="${page.isSearch} ?  @{${url}(pageIndex=${page.pageIndex} + 1, searchCondition=${page.searchCondition}, searchKeyword=${page.searchKeyword})} : @{${url}(pageIndex=${page.pageIndex}+1)}">></a></li>
         </ul>
     </div>
     <div th:fragment="paging_info">
