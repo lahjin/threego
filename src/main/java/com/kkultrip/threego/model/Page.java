@@ -54,7 +54,7 @@ public class Page {
         this.indexCount = indexCount;
         this.pageCount = (int) Math.ceil(indexCount / (double) indexSize);
         this.pageIndex = pageIndex > this.pageCount || pageIndex < 1 ? 1 : pageIndex;
-        this.startPage = ((this.pageIndex-1) / pageSize) * pageSize + 1;
+        this.startPage = this.indexCount == 0 ? 0 : ((this.pageIndex-1) / pageSize) * pageSize + 1;
         this.endPage = Math.min(startPage + pageSize - 1, pageCount);
         this.isPrev = this.pageIndex > 1;
         this.isNext = this.pageIndex < pageCount;
@@ -74,7 +74,7 @@ public class Page {
         this.indexCount = indexCount;
         this.pageCount = (int) Math.ceil(indexCount / (double) indexSize);
         this.pageIndex = pageIndex > this.pageCount || pageIndex < 1 ? 1 : pageIndex;
-        this.startPage = ((this.pageIndex-1) / pageSize) * pageSize + 1;
+        this.startPage = this.indexCount == 0 ? 0 : ((this.pageIndex-1) / pageSize) * pageSize + 1;
         this.endPage = Math.min(startPage + pageSize - 1, pageCount);
         this.isPrev = this.pageIndex > 1;
         this.isNext = this.pageIndex < pageCount;

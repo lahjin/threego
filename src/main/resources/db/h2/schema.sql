@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `notice` (
                           `id`	bigint	NOT NULL	AUTO_INCREMENT PRIMARY KEY ,
                           `title`	varchar(255)	NOT NULL,
                           `content`	varchar(255)	NOT NULL,
-                          `date`	TIMESTAMP	NOT NULL,
+                          `date`	TIMESTAMP	NOT NULL DEFAULT CURRENT_TIMESTAMP ,
                           `active`	boolean	NOT NULL	DEFAULT true
 );
 
