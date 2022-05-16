@@ -35,7 +35,8 @@ public final class NavList {
 
     public static void navNotice(Model model){
         List<NavListDto> list = new ArrayList<>();
-        list.add(new NavListDto("목록", "#"));
+        list.add(new NavListDto("목록", "/notice"));
+        list.add(new NavListDto("글쓰기", "/notice/add"));
         model.addAttribute("header", "공지사항");
         model.addAttribute("list",list);
     }

@@ -1,0 +1,42 @@
+.find_searchBar{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: white;
+}
+
+.find_bar,
+.find_combo{
+    height: 30px;
+    border: 0;
+}
+
+.find_combo{
+    width: 10%;
+}
+
+.find_bar{
+    width: 85%;
+}
+
+.find_list{
+    width: 100%;
+    margin-top: 30px;
+    border-top: 1px solid #999;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.find_list tr{
+    border-bottom: 1px solid #ccc ;
+}
+
+.find_list th,
+.find_list td{
+    padding: 10px;
+    font-size: 14px;
+}
+
+.find_list td{
+    text-align: center;
+}

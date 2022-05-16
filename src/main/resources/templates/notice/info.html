@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/defaultLayout :: default_layout(~{::title},~{::link},~{::section})}">
+<head>
+  <meta charset="UTF-8">
+  <title>공지사항</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/find.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/notice/info.css}">
+
+</head>
+<body>
+<section>
+    <div class="infoForm_div">
+        <input type="hidden" name="id" th:value="${notice.id}">
+        <div class="infoForm_main">
+            <div>
+                <h1 class="infoForm_title" th:text="${notice.title}"></h1>
+                <h5 class="infoForm_date" th:text="${notice.date}"></h5>
+                <p class="infoForm_content" th:text="${notice.content}"></p>
+            </div>
+            <button><a class="infoForm_a" th:href="@{/notice/edit/{id} (id=${notice.id})}">수정</a></button>
+            <button th:classappend="${notice.active} ? 'active_false' : 'active_true'">
+                <a
+                        th:text="${notice.active} ? '비활성' : '활성' "
+                        th:href="@{/notice/active/{id} (id=${notice.id})}"
+                >
+                    상태변경
+                </a>
+            </button>
+        </div>
+</section>
+</body>
+</html>
