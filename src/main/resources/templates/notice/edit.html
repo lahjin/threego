@@ -10,7 +10,7 @@
 </head>
 <body>
 <section>
-    <form action="/notice/edit" method="post">
+    <form th:action="${mode} == 'write' ? '/notice/add' : '/notice/edit'" th:method="post">
         <div class="editForm_div">
         <input type="hidden" name="id" th:value="${notice.id}">
             <div class="edit_title_div">
@@ -21,7 +21,7 @@
                 <label for="edit_content" class="edit_label">내용</label>
                 <textarea id="edit_content" name="content" th:text="${notice.content}"></textarea>
             </div>
-            <div class="edit_active_div">
+            <div class="edit_active_div" th:if="${mode} != 'write'">
                 <label class="edit_label">상태</label>
                 <div class="edit_active_radio">
                     <label><input type="radio" name="active" value="true" th:checked="${notice.active} == true" >true</label>
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="edit_submit">
-                <button type="submit">수정</button>
+                <button type="submit" th:text="${mode} == 'write' ? '추가' : '수정'">??</button>
             </div>
         </div>
     </form>

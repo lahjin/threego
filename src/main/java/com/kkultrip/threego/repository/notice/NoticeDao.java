@@ -2,16 +2,19 @@ package com.kkultrip.threego.repository.notice;
 
 import com.kkultrip.threego.model.Notice;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.*;
 
 @Repository
 public class NoticeDao implements NoticeRepo{
@@ -42,9 +45,25 @@ public class NoticeDao implements NoticeRepo{
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("title", notice.getTitle());
         parameters.put("content", notice.getContent());
-
+        parameters.put("date", new Date());
+        parameters.put("active", true);
         Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));
+
         notice.setId(key.longValue());
+
+        // PreparedStatementCreator 방식으로 기본키 찾기
+        /*
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbcTemplate.update(con -> {
+            PreparedStatement pstmt = con.prepareStatement("insert into notice(title, content) values (?, ?)", new String[]{"ID"});
+            pstmt.setString(1, notice.getTitle());
+            pstmt.setString(2, notice.getContent());
+            return pstmt;
+        }, keyHolder);
+        Number keyValue = keyHolder.getKey();
+        notice.setId(keyValue.longValue());
+        */
+
         return notice;
     }
 

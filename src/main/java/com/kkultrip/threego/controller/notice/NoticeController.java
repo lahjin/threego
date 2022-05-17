@@ -86,10 +86,34 @@ public class NoticeController {
             return "notice/error";
     }
 
-    @GetMapping("/notice/add")
-    public String noticeAdd(Model model) {
+    @GetMapping("/notice/write")
+    public String noticeWrite(Model model) {
 
         NavList.navNotice(model);
+        model.addAttribute("notice", new Notice());
+        model.addAttribute("mode", "write");
         return  "notice/edit";
+    }
+
+    @PostMapping("/notice/add")
+    public String noticeAdd(
+            Notice notices,
+            @RequestParam(value = "pageIndex", required = false) Integer pageIndex,
+            @RequestParam(value = "indexSize", required = false) Integer indexSize,
+            @RequestParam(value = "searchCondition", required = false) String searchCondition,
+            @RequestParam(value = "searchKeyword", required = false) String searchKeyword,
+            Model model) {
+
+        noticeService.save(notices);
+
+        Page page = noticeService.pageInfo(pageIndex, indexSize, searchCondition, searchKeyword);
+
+        List<Notice> notice = noticeService.pageList(page);
+
+        model.addAttribute("notice", notice);
+        model.addAttribute("page", page);
+
+        NavList.navNotice(model);
+        return "notice/notice";
     }
 }

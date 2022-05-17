@@ -17,6 +17,11 @@ public class NoticeService {
         this.noticeRepo = noticeRepo;
     }
 
+    public Long save(Notice notice) {
+        noticeRepo.save(notice);
+        return notice.getId();
+    }
+
     public List<Notice> findAll() {
         return noticeRepo.findAll();
     }
