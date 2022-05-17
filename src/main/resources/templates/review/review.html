@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/defaultLayout :: default_layout(~{::title},~{::link},~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>review</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/find.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/review/review.css}">
+
+</head>
+<body>
+<section>
+    <div class="section-main">
+        <form id="find_???_form" method="get">
+            <div class="find_searchBar">
+                <select name="searchCondition" class="find_combo" >
+                    <option value="title">제목</option>
+                    <option value="memeber">회원</option>
+                    <option value="tourspot">관광지</option>
+                </select>
+                <input type="text" placeholder="검색하기" class="find_bar" name="searchKeyword">
+            </div>
+        </form>
+        <table class="find_list">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>회원</th>
+                <th>관광</th>
+                <th>제목</th>
+                <th>상태</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="review : ${review}">
+                <td th:text="${review.id}">ID</td>
+                <td th:text="${review.user_id}">회원</td>
+                <td th:text="${review.tour_id}">관광지</td>
+               <td><a th:text="${review.title}" th:href="@{/review/info/{id} (id = ${review.id})}">제목</a></td>
+                <td th:text="${review.active}">상태</td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:replace="~{fragments/paging :: paging}"></div>
+    </div>
+</section>
+</body>
+</html>

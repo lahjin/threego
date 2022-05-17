@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/defaultLayout :: default_layout(~{::title},~{::link},~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>review</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/review/info.css}">
+</head>
+<body>
+<section>
+    <form action="/comment/info" method="get">
+    <div class="infoForm_div">
+        <input type="hidden" name="id" th:value="${comment.id}">
+        <div class="infoForm_main">
+            <div>
+                <p class="infoForm_content" th:text="${comment.content}"></p>
+            </div>
+        </div>
+    </div>
+
+    </form>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/defaultLayout :: default_layout(~{::title},~{::link},~{::section})}">
+<head>
+  <meta charset="UTF-8">
+  <title>price</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/find.css}">
+
+</head>
+<body>
+<section>
+  <div class="section-main">
+<form id="find_???_form" method="get">
+    <div class="find_searchBar">
+      <select name="가격정보" class="find_combo" >
+        <option value="가격">가격</option>
+        <option value="상호명">상호명</option>
+        <option value="주소">주소</option>
+        <option value="위치">위치</option>
+        <option value="날짜">날짜</option>
+      </select>
+      <input type="text" placeholder="검색하기" class="find_bar">
+    </div>
+</form>
+    <table class="find_list">
+      <thead>
+      <tr>
+        <th>가격</th>
+        <th>상호명</th>
+        <th>주소</th>
+        <th>위치</th>
+        <th>날짜</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>가격</td>
+        <td>가게</td>
+        <td>대구광역시</td>
+        <td>경상북도</td>
+        <td>20020020</td>
+      </tr>
+      <tr>
+        <td>가격</td>
+        <td>가게</td>
+        <td>대구광역시</td>
+        <td>경상북도</td>
+        <td>20020020</td>
+      </tr>
+      <tr>
+        <td>가격</td>
+        <td>가게</td>
+        <td>대구광역시</td>
+        <td>경상북도</td>
+        <td>20020020</td>
+      </tr>
+      <tr>
+        <td>가격</td>
+        <td>가게</td>
+        <td>대구광역시</td>
+        <td>경상북도</td>
+        <td>20020020</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</body>
+</html>

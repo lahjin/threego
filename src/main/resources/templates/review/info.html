@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/defaultLayout :: default_layout(~{::title},~{::link},~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>review</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/review/info.css}">
+</head>
+<body>
+<section>
+    <div class="infoForm_div">
+        <input type="hidden" name="id" th:value="${review.id}">
+        <div class="infoForm_main">
+            <div>
+                <h1 class="infoForm_title" th:text="${review.title}"></h1>
+                <h5 class="infoForm_date" th:text="${review.date}"></h5>
+                <p class="infoForm_content" th:text="${review.content}"></p>
+            </div>
+            <div>
+                <div>
+                    <ul>
+                        <li>※ 댓글 리스트 ※</li>
+                        <li th:each="comment : ${comment}">
+                            <span th:text=" ${comment.user_id}">1) 닉네임</span>
+                            <a th:href="@{/comment/info/{id} (id = ${comment.id})}">링크</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <button th:classappend="${review.active} ? 'active_false' : 'active_true'">
+                        <a
+                                th:text="${review.active} ? '비활성' : '활성' "
+                                th:href="@{/review/active/{id} (id=${review.id})}"
+                        >
+                            상태변경
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

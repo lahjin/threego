@@ -28,7 +28,8 @@ public final class NavList {
 
     public static void navReview(Model model){
         List<NavListDto> list = new ArrayList<>();
-        list.add(new NavListDto("목록", "#"));
+        list.add(new NavListDto("목록", "/review"));
+        list.add(new NavListDto("댓글관리", "/comment"));
         model.addAttribute("header", "리뷰관리");
         model.addAttribute("list",list);
     }
