@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/defaultLayout :: default_layout(~{::title},~{::link},~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>관광관리</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/find.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/tour/edit.css}">
+
+</head>
+<body>
+<section>
+    <form th:action="${mode} == 'write' ? '/tour/add' : '/tour/edit'" th:method="post">
+        <div class="editForm_div">
+        <input type="hidden" name="id" th:value="${tour.id}">
+            <div class="edit_title_div">
+                <label class="edit_label" for="edit_title">관광명</label>
+                <input type="text" id="edit_title" name="name" th:value="${tour.name}">
+            </div>
+            <div class="edit_content_div">
+                <label for="edit_content" class="edit_label">설명</label>
+                <textarea id="edit_content" name="description" th:text="${tour.description}"></textarea>
+            </div>
+            <div class="edit_category_div">
+                <label class="edit_label">카테고리</label>
+                <select name="category_id">
+                    <option th:each="category : ${category}" th:value="${category.id}" th:text="${category.name}"></option>
+                </select>
+            </div>
+            <div class="edit_active_div" th:if="${mode} != 'write'">
+                <label class="edit_label">상태</label>
+                <div class="edit_active_radio">
+                    <label><input type="radio" name="active" value="true" th:checked="${tour.active} == true" >true</label>
+                    <label><input type="radio" name="active" value="false" th:checked="${tour.active} == false" >false</label>
+                </div>
+            </div>
+            <div class="edit_submit">
+                <button type="submit" th:text="${mode} == 'write' ? '추가' : '수정'">??</button>
+            </div>
+        </div>
+    </form>
+</section>
+</body>
+</html>

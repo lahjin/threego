@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/defaultLayout :: default_layout(~{::title},~{::link},~{::section})}">
+<head>
+  <meta charset="UTF-8">
+  <title>관광관리</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/find.css}">
+
+</head>
+<body>
+<section>
+  <div class="section-main">
+    <form id="find_notice_form" method="get">
+      <div class="find_searchBar">
+        <select name="searchCondition" class="find_combo" >
+          <option value="name">관광명</option>
+          <option value="category_id">카테고리 ID</option>
+        </select>
+        <input type="text" placeholder="검색하기" class="find_bar" name="searchKeyword">
+      </div>
+    </form>
+    <table class="find_list">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>관광명</th>
+        <th>생성일</th>
+        <th>카테고리 ID</th>
+        <th>상태</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="tour : ${tour}">
+        <td th:text="${tour.id}">ID</td>
+<!--        <td><a th:text="${notice.title}" th:href="@{/noticePage(id=${notice.id})}">제목</a></td>-->
+        <td><a th:text="${tour.name}" th:href="@{/tour/info/{id} (id = ${tour.id})}">관광명</a></td>
+        <td th:text="${tour.date}">생성일</td>
+        <td th:text="${tour.category_id}">카테고리</td>
+        <td th:text="${tour.active}">상태</td>
+      </tr>
+      </tbody>
+    </table>
+    <div th:replace="~{fragments/paging :: paging}"></div>
+<!--    <div th:replace="~{fragments/paging :: paging_info}"></div>-->
+  </div>
+</section>
+</body>
+</html>
