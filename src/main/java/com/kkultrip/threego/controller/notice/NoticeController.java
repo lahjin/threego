@@ -54,6 +54,8 @@ public class NoticeController {
     @GetMapping("/notice/edit/{id}")
     public String noticeEditId(@PathVariable Long id, Model model) {
         Optional<Notice> notice = noticeService.findId(id);
+
+        notice.get().setContent(notice.get().getContent().replace("<br/>", "\r\n"));
         model.addAttribute("notice", notice.get());
 
         NavList.navNotice(model);
@@ -61,10 +63,12 @@ public class NoticeController {
     }
 
     @PostMapping("/notice/edit")
-    public String noticeEdit(Notice notices, Model model) {
-        int rs = noticeService.updateInfo(notices);
+    public String noticeEdit(Notice _notice, Model model) {
+        _notice.setContent(_notice.getContent().replace("\r\n", "<br/>"));
 
-        Optional<Notice> notice = noticeService.findId(notices.getId());
+        int rs = noticeService.updateInfo(_notice);
+
+        Optional<Notice> notice = noticeService.findId(_notice.getId());
         model.addAttribute("notice", notice.get());
 
         NavList.navNotice(model);
@@ -96,24 +100,15 @@ public class NoticeController {
     }
 
     @PostMapping("/notice/add")
-    public String noticeAdd(
-            Notice notices,
-            @RequestParam(value = "pageIndex", required = false) Integer pageIndex,
-            @RequestParam(value = "indexSize", required = false) Integer indexSize,
-            @RequestParam(value = "searchCondition", required = false) String searchCondition,
-            @RequestParam(value = "searchKeyword", required = false) String searchKeyword,
-            Model model) {
+    public String noticeAdd(Notice _notice, Model model) {
+        _notice.setContent(_notice.getContent().replace("\r\n", "<br/>"));
 
-        noticeService.save(notices);
+        Long rs = noticeService.save(_notice);
 
-        Page page = noticeService.pageInfo(pageIndex, indexSize, searchCondition, searchKeyword);
-
-        List<Notice> notice = noticeService.pageList(page);
-
-        model.addAttribute("notice", notice);
-        model.addAttribute("page", page);
+        Optional<Notice> notice = noticeService.findId(_notice.getId());
+        model.addAttribute("notice", notice.get());
 
         NavList.navNotice(model);
-        return "notice/notice";
+        return "notice/info";
     }
 }

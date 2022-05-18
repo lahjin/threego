@@ -16,7 +16,7 @@
             <div>
                 <h1 class="infoForm_title" th:text="${notice.title}"></h1>
                 <h5 class="infoForm_date" th:text="${notice.date}"></h5>
-                <p class="infoForm_content" th:text="${notice.content}"></p>
+                <p class="infoForm_content" th:utext="${notice.content.replace('\r\n', '<br/>')}"></p>
             </div>
             <button><a class="infoForm_a" th:href="@{/notice/edit/{id} (id=${notice.id})}">수정</a></button>
             <button th:classappend="${notice.active} ? 'active_false' : 'active_true'">
@@ -28,6 +28,7 @@
                 </a>
             </button>
         </div>
+    </div>
 </section>
 </body>
 </html>
