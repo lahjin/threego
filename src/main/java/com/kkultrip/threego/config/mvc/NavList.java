@@ -21,8 +21,11 @@ public final class NavList {
 
     public static void navTour(Model model){
         List<NavListDto> list = new ArrayList<>();
-        list.add(new NavListDto("목록", "#"));
-        model.addAttribute("header", "투어관리");
+        list.add(new NavListDto("목록", "/tour"));
+        list.add(new NavListDto("글쓰기", "/tour/write"));
+        list.add(new NavListDto("카테고리 목록", "/category"));
+        list.add(new NavListDto("카테고리 글쓰기", "/category/write"));
+        model.addAttribute("header", "관광관리");
         model.addAttribute("list",list);
     }
 
@@ -44,7 +47,7 @@ public final class NavList {
 
     public static void navAsk(Model model){
         List<NavListDto> list = new ArrayList<>();
-        list.add(new NavListDto("목록", "#"));
+        list.add(new NavListDto("목록", "/ask"));
         model.addAttribute("header", "문의사항");
         model.addAttribute("list",list);
     }
