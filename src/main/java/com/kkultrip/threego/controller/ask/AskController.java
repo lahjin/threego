@@ -57,7 +57,8 @@ public class AskController {
         Optional<Ask> ask = askService.findId(id);
 
         ask.get().setContent(ask.get().getContent().replace("<br/>", "\r\n"));
-        ask.get().setAnswer(ask.get().getAnswer().replace("<br/>", "\r\n"));
+        if(ask.get().getAnswer() != null)
+            ask.get().setAnswer(ask.get().getAnswer().replace("<br/>", "\r\n"));
 
         model.addAttribute("ask", ask.get());
 

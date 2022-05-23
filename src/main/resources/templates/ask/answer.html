@@ -23,7 +23,7 @@
             </div>
             <div class="edit_content_div">
                 <label for="edit_answer" class="edit_label">답변 내용</label>
-                <textarea id="edit_answer" name="answer" th:utext="${ask.answer.replace('\r\n', '<br/>')}"></textarea>
+                <textarea id="edit_answer" name="answer" th:utext="${ask.answer != null ? ask.answer.replace('\r\n', '<br/>') : null}"></textarea>
             </div>
             <div class="edit_submit">
                 <button type="submit">답변</button>

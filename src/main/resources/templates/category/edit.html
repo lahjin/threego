@@ -13,6 +13,9 @@
     <form th:action="${mode} == 'write' ? '/category/add' : '/category/edit'" th:method="post">
         <div class="editForm_div">
         <input type="hidden" name="id" th:value="${category.id}">
+            <div class="edit_title">
+                <h1 th:text="${mode} == 'write' ? '카테고리 추가' : '카테고리 수정'">카테고리</h1>
+            </div>
             <div class="edit_content_div">
                 <label for="edit_name" class="edit_label">이름</label>
                 <input type="text" id="edit_name" name="name" th:value="${category.name}">

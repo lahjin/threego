@@ -25,7 +25,7 @@ public final class NavList {
         list.add(new NavListDto("목록", "/tour"));
         list.add(new NavListDto("글쓰기", "/tour/write"));
         list.add(new NavListDto("카테고리 목록", "/category"));
-        list.add(new NavListDto("카테고리 글쓰기", "/category/write"));
+        list.add(new NavListDto("카테고리 추가", "/category/write"));
         model.addAttribute("header", "관광관리");
         model.addAttribute("list",list);
     }
@@ -60,17 +60,4 @@ public final class NavList {
         model.addAttribute("list",list);
     }
 
-    public static void navStaff(Model model){
-        List<NavListDto> list = new ArrayList<>();
-        list.add(new NavListDto("목록", "#"));
-        model.addAttribute("header", "직원관리");
-        model.addAttribute("list",list);
-    }
-
-    public static void navAuth(Model model){
-        List<NavListDto> list = new ArrayList<>();
-        list.add(new NavListDto("목록", "#"));
-        model.addAttribute("header", "권한관리");
-        model.addAttribute("list",list);
-    }
 }
