@@ -14,7 +14,8 @@ public final class NavList {
 
     public static void navPlace(Model model){
         List<NavListDto> list = new ArrayList<>();
-        list.add(new NavListDto("목록", "#"));
+        list.add(new NavListDto("목록", "/place"));
+        list.add(new NavListDto("글쓰기", "/place/write"));
         model.addAttribute("header", "장소관리");
         model.addAttribute("list",list);
     }
@@ -54,7 +55,7 @@ public final class NavList {
 
     public static void navUser(Model model){
         List<NavListDto> list = new ArrayList<>();
-        list.add(new NavListDto("목록", "#"));
+        list.add(new NavListDto("목록", "/user"));
         model.addAttribute("header", "회원관리");
         model.addAttribute("list",list);
     }

@@ -1,8 +1,6 @@
 package com.kkultrip.threego.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -17,6 +15,7 @@ import java.util.Set;
         }
 )
 @Getter
+@Setter
 @NoArgsConstructor
 public class User {
 
@@ -36,6 +35,8 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date regDate;
+
+    private boolean active;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(  name = "user_roles",

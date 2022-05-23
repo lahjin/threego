@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/defaultLayout :: default_layout(~{::title},~{::link},~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>place</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/find.css}">
+
+</head>
+<body>
+<section>
+    <div class="section-main">
+        <form id="find_???_form" method="get">
+            <div class="find_searchBar">
+                <select name="searchCondition" class="find_combo" >
+                    <option value="name">장소명</option>
+                    <option value="address">주소</option>
+                </select>
+                <input type="text" placeholder="검색하기" class="find_bar" name="searchKeyword">
+            </div>
+        </form>
+        <table class="find_list">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>장소명</th>
+                <th>주소</th>
+                <th>생성일</th>
+                <th>상태</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="place : ${place}">
+                <td th:text="${place.id}">ID</td>
+                <td><a th:text="${place.name}" th:href="@{/place/info/{id} (id = ${place.id})}">장소명</a></td>
+                <td th:text="${place.address}">주소</td>
+                <td th:text="${place.date}">생성일</td>
+                <td th:text="${place.active}">상태</td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:replace="~{fragments/paging :: paging}"></div>
+    </div>
+</section>
+</body>
+</html>

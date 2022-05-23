@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/defaultLayout :: default_layout(~{::title},~{::link},~{::section})}">
+<head>
+  <meta charset="UTF-8">
+  <title>장소</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/find.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/place/info.css}">
+
+</head>
+<body>
+<section>
+    <div class="infoForm_div">
+        <input type="hidden" name="id" th:value="${place.id}">
+        <div class="infoForm_main">
+            <div>
+                <h1 class="infoForm_title" th:text="${place.name}"></h1>
+                <h5 class="infoForm_date" th:text="${place.date}"></h5>
+                <h5 class="infoForm_date" th:text=" '위도 : ' + ${place.latitude}"></h5>
+                <h5 class="infoForm_date" th:text=" '경도 : ' + ${place.longitude}"></h5>
+                <p class="infoForm_content" th:utext="${place.description}"></p>
+            </div>
+            <div class="infoForm_answer">
+                <h3 th:text="${place.guide}"></h3>
+            </div>
+            <button><a class="infoForm_a" th:href="@{/place/edit/{id} (id=${place.id})}">수정</a></button>
+            <button th:classappend="${place.active} ? 'active_false' : 'active_true'">
+                <a
+                        th:text="${place.active} ? '비활성' : '활성' "
+                        th:href="@{/place/active/{id} (id=${place.id})}"
+                >
+                    상태변경
+                </a>
+            </button>
+        </div>
+    </div>
+</section>
+</body>
+</html>

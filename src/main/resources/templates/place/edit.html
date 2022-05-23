@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/defaultLayout :: default_layout(~{::title},~{::link},~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>장소</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/find.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/place/edit.css}">
+
+</head>
+<body>
+<section>
+    <form th:action="${mode} == 'write' ? '/place/add' : '/place/edit'" th:method="post">
+        <div class="editForm_div">
+        <input type="hidden" name="id" th:value="${place.id}">
+            <div class="edit_title_div">
+                <label class="edit_label" for="edit_name">장소명</label>
+                <input type="text" id="edit_name" name="name" th:value="${place.name}">
+            </div>
+            <div class="edit_title_div">
+                <label class="edit_label" for="edit_latitude">위도</label>
+                <input type="text" id="edit_latitude" name="latitude" th:value="${place.latitude}">
+            </div>
+            <div class="edit_title_div">
+                <label class="edit_label" for="edit_longitude">경도</label>
+                <input type="text" id="edit_longitude" name="longitude" th:value="${place.longitude}">
+            </div>
+            <div class="edit_title_div">
+                <label class="edit_label" for="edit_address">주소</label>
+                <input type="text" id="edit_address" name="address" th:value="${place.address}">
+            </div>
+            <div class="edit_content_div">
+                <label for="edit_description" class="edit_label">설명</label>
+                <textarea id="edit_description" name="description" th:text="${place.description}"></textarea>
+            </div>
+            <div class="edit_content_div">
+                <label for="edit_guide" class="edit_label">가이드</label>
+                <textarea id="edit_guide" name="guide" th:text="${place.guide}"></textarea>
+            </div>
+            <div class="edit_active_div" th:if="${mode} != 'write'">
+                <label class="edit_label">상태</label>
+                <div class="edit_active_radio">
+                    <label><input type="radio" name="active" value="true" th:checked="${place.active} == true" >true</label>
+                    <label><input type="radio" name="active" value="false" th:checked="${place.active} == false" >false</label>
+                </div>
+            </div>
+            <div class="edit_submit">
+                <button type="submit" th:text="${mode} == 'write' ? '추가' : '수정'">??</button>
+            </div>
+        </div>
+    </form>
+</section>
+</body>
+</html>
