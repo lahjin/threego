@@ -8,3 +8,77 @@
 .section-main > div:not(:last-child){
     margin-bottom: 15px;
 }
+
+.category{
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.category > div{
+    margin: 15px;
+    padding: 15px;
+    width: 250px;
+    height: 80px;
+    border-radius: 10px;
+}
+.category > div > i{
+    display: inline-block;
+    font-size: 48px;
+    color: white;
+}
+.category > div > h1{
+    display: inline-block;
+    margin: 10px;
+    width: 180px;
+    color: white;
+    text-align: right;
+}
+
+.category > div > hr{
+    color: black;
+    background-color: black;
+    border-color: black;
+}
+
+.category > div > h3{
+    margin: 5px;
+    color: white;
+    text-align: right;
+}
+
+.category:first-child > div:first-child{
+    background-color: skyblue;
+}
+
+.category:first-child > div:nth-child(2){
+    background-color: plum;
+}
+
+.category:first-child > div:nth-child(3){
+    background-color: #D4EDDB;
+}
+
+.category:nth-child(2) > div:first-child{
+    background-color: aquamarine;
+}
+
+.category:nth-child(2) > div:last-child{
+    background-color: tomato;
+}
+
+.category:nth-child(3) > div:first-child{
+    background-color: darksalmon;
+}
+
+.category:nth-child(3) > div:last-child{
+    background-color: greenyellow;
+}
+
+.category:nth-child(4) > div:first-child{
+    background-color: thistle;
+}
+
+.category:nth-child(4) > div:last-child{
+    background-color: slateblue;
+}

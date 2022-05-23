@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,7 +85,7 @@ public class CategoryController {
 
     @PostMapping("/category/add")
     public String categoryAdd(
-            Category _category,
+            @Valid Category _category,
             @RequestParam(value = "pageIndex", required = false) Integer pageIndex,
             @RequestParam(value = "indexSize", required = false) Integer indexSize,
             @RequestParam(value = "searchCondition", required = false) String searchCondition,

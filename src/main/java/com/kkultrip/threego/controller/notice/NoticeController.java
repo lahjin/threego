@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -100,7 +101,7 @@ public class NoticeController {
     }
 
     @PostMapping("/notice/add")
-    public String noticeAdd(Notice _notice, Model model) {
+    public String noticeAdd(@Valid Notice _notice, Model model) {
         _notice.setContent(_notice.getContent().replace("\r\n", "<br/>"));
 
         Long rs = noticeService.save(_notice);

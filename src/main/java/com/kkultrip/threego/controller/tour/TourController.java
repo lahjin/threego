@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -111,7 +112,7 @@ public class TourController {
     }
 
     @PostMapping("/tour/add")
-    public String tourAdd(Tour _tour, Model model) {
+    public String tourAdd(@Valid Tour _tour, Model model) {
         _tour.setDescription(_tour.getDescription().replace("\r\n", "<br/>"));
 
         Long rs = tourService.save(_tour);

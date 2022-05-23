@@ -22,8 +22,8 @@ public final class NavList {
 
     public static void navTour(Model model){
         List<NavListDto> list = new ArrayList<>();
-        list.add(new NavListDto("목록", "/tour"));
-        list.add(new NavListDto("글쓰기", "/tour/write"));
+        list.add(new NavListDto("관광 목록", "/tour"));
+        list.add(new NavListDto("관광 추가", "/tour/write"));
         list.add(new NavListDto("카테고리 목록", "/category"));
         list.add(new NavListDto("카테고리 추가", "/category/write"));
         model.addAttribute("header", "관광관리");
