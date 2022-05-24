@@ -19,9 +19,11 @@
                 <h5 class="infoForm_date" th:text=" '위도 : ' + ${place.latitude}"></h5>
                 <h5 class="infoForm_date" th:text=" '경도 : ' + ${place.longitude}"></h5>
                 <p class="infoForm_content" th:utext="${place.description.replace('\r\n', '<br>')}"></p>
-            </div>
+
             <div class="infoForm_answer">
+                <h3>가이드</h3>
                 <h3 th:utext="${place.guide.replace('\r\n', '<br>')}"></h3>
+            </div>
             </div>
             <button><a class="infoForm_a" th:href="@{/place/edit/{id} (id=${place.id})}">수정</a></button>
             <button th:classappend="${place.active} ? 'active_false' : 'active_true'">

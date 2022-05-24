@@ -67,3 +67,13 @@ button{
 .active_false{
     background-color: #ff4343 !important;
 }
+
+
+.infoForm_answer {
+    border-top: 2px dashed lightgray !important;
+}
+
+.infoForm_answer > h3,
+.infoForm_answer > p {
+    margin: 10px;
+}
