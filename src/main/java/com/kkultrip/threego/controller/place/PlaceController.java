@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,8 +54,10 @@ public class PlaceController {
     @GetMapping("/place/edit/{id}")
     public String placeEditId(@PathVariable Long id, Model model) {
         Optional<Place> place = placeService.findId(id);
-
-        place.get().setName(place.get().getName().replace("<br/>", "\r\n"));
+        if(place.get().getDescription() != null)
+         place.get().setDescription(place.get().getDescription().replace("<br/>", "\r\n"));
+        if(place.get().getGuide() != null)
+         place.get().setGuide(place.get().getGuide().replace("<br/>", "\r\n"));
         model.addAttribute("place", place.get());
 
         NavList.navPlace(model);
@@ -63,7 +66,8 @@ public class PlaceController {
 
     @PostMapping("/place/edit")
     public String placeEdit(Place _place, Model model) {
-
+        _place.setDescription(_place.getDescription().replace("\r\n", "<br/>"));
+        _place.setGuide(_place.getGuide().replace("\r\n", "<br/>"));
         int rs = placeService.updateInfo(_place);
 
         Optional<Place> place = placeService.findId(_place.getId());
@@ -99,15 +103,17 @@ public class PlaceController {
     }
 
     @PostMapping("/place/add")
-    public String placeAdd(Place _place, Model model) {
-//        _place.setContent(_place.getContent().replace("\r\n", "<br/>"));
+    public String placeAdd(@Valid Place _place, Model model) {
+        NavList.navPlace(model);
+        _place.setDescription(_place.getDescription().replace("\r\n", "<br/>"));
+        _place.setGuide(_place.getGuide().replace("\r\n", "<br/>"));
 
         Long rs = placeService.save(_place);
 
         Optional<Place> place = placeService.findId(_place.getId());
         model.addAttribute("place", place.get());
 
-        NavList.navPlace(model);
+
         return "place/info";
     }
 

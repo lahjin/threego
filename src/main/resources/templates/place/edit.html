@@ -31,11 +31,11 @@
             </div>
             <div class="edit_content_div">
                 <label for="edit_description" class="edit_label">설명</label>
-                <textarea id="edit_description" name="description" th:text="${place.description}"></textarea>
+                <textarea id="edit_description" name="description" th:utext="${place.description != null ? place.description.replace('\r\n', '<br>') : null}"></textarea>
             </div>
             <div class="edit_content_div">
                 <label for="edit_guide" class="edit_label">가이드</label>
-                <textarea id="edit_guide" name="guide" th:text="${place.guide}"></textarea>
+                <textarea id="edit_guide" name="guide" th:utext="${place.guide != null ? place.guide.replace('\r\n', '<br>') : null}"></textarea>
             </div>
             <div class="edit_active_div" th:if="${mode} != 'write'">
                 <label class="edit_label">상태</label>
