@@ -29,4 +29,6 @@ public interface PlaceRepo {
     int updateActive(Long id, boolean active);
 
     int updateById(Place place);
+
+    int countPlace();
 }

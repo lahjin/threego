@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,7 +68,7 @@ public class AskController {
     }
 
     @PostMapping("/ask/answer")
-    public String askAnswer(Ask _ask, Model model) {
+    public String askAnswer(@Valid Ask _ask, Model model) {
         _ask.setAnswer(_ask.getAnswer().replace("\r\n", "<br/>"));
 
         int rs = askService.updateInfo(_ask);

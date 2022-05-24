@@ -20,4 +20,6 @@ public interface AskRepo {
     List<Ask> findByTitlePage(String title, int startOffset, int indexSize);
     int countByUserID(String user_id);
     List<Ask> findByUserIDPage(String user_id, int startOffset, int indexSize);
+    int countRecentlyAsk();
+    int countNullAsk();
 }

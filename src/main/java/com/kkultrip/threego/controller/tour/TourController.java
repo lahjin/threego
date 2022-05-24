@@ -93,6 +93,7 @@ public class TourController {
         if(rs == 1) {
             tour.get().setActive(!tour.get().isActive());
             model.addAttribute("tour", tour.get());
+            NavList.navTour(model);
             return "tour/info";
         }
         else

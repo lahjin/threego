@@ -13,19 +13,19 @@
             <div class="category">
                 <div>
                     <i class="fa-solid fa-font-awesome"></i>
-                    <h1>숫자</h1>
+                    <h1 th:text="${visitor} + '명'">숫자</h1>
                     <hr/>
                     <h3>최근 방문객</h3>
                 </div>
                 <div>
                     <i class="fa-solid fa-font-awesome"></i>
-                    <h1>숫자</h1>
+                    <h1 th:text="${allUser} + '명'">숫자</h1>
                     <hr/>
                     <h3>총 회원</h3>
                 </div>
                 <div>
                     <i class="fa-solid fa-font-awesome"></i>
-                    <h1>숫자</h1>
+                    <h1 th:text="${recentlyUser} + '명'">숫자</h1>
                     <hr/>
                     <h3>최근 가입</h3>
                 </div>
@@ -33,13 +33,13 @@
             <div class="category">
                 <div>
                     <i class="fa-solid fa-font-awesome"></i>
-                    <h1>숫자</h1>
+                    <h1 th:text="${place} + '개'">숫자</h1>
                     <hr/>
                     <h3>서비스 중인 장소</h3>
                 </div>
                 <div>
                     <i class="fa-solid fa-font-awesome"></i>
-                    <h1>숫자</h1>
+                    <h1 th:text="${tour} + '개'">숫자</h1>
                     <hr/>
                     <h3>서비스 중인 관광</h3>
                 </div>
@@ -47,13 +47,13 @@
             <div class="category">
                 <div>
                     <i class="fa-solid fa-font-awesome"></i>
-                    <h1>숫자</h1>
+                    <h1 th:text="${allReview} + '개'">숫자</h1>
                     <hr/>
                     <h3>총 리뷰</h3>
                 </div>
                 <div>
                     <i class="fa-solid fa-font-awesome"></i>
-                    <h1>숫자</h1>
+                    <h1 th:text="${recentlyReview} + '개'">숫자</h1>
                     <hr/>
                     <h3>최근 리뷰</h3>
                 </div>
@@ -61,13 +61,13 @@
             <div class="category">
                 <div>
                     <i class="fa-solid fa-font-awesome"></i>
-                    <h1>숫자</h1>
+                    <h1 th:text="${recentlyAsk} + '개'">숫자</h1>
                     <hr/>
                     <h3>최근 문의사항</h3>
                 </div>
                 <div>
                     <i class="fa-solid fa-font-awesome"></i>
-                    <h1>숫자</h1>
+                    <h1 th:text="${nullAsk} + '개'">숫자</h1>
                     <hr/>
                     <h3>미답변 문의사항</h3>
                 </div>

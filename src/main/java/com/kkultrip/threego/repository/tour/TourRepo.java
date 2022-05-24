@@ -32,4 +32,5 @@ public interface TourRepo {
     int countByCategoryID(String categoryID);
 
     List<Tour> findByCategoryIDPage(String categoryID, int startOffset, int indexSize);
+    int countTour();
 }

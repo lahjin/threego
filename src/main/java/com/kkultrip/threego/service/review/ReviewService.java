@@ -80,4 +80,12 @@ public class ReviewService {
             return reviewRepo.findByTitlePage(page.getSearchKeyword(), startOffset, page.getIndexSize());
         return null;
     }
+
+    public int countReview() {
+        return reviewRepo.countReview();
+    }
+
+    public int countRecentlyReview() {
+        return reviewRepo.countRecentlyReview();
+    }
 }

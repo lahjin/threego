@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Getter @Setter
@@ -12,9 +12,9 @@ import javax.validation.constraints.NotNull;
 public class Tour {
 
     private Long id;
-    @NotNull @Min(1)
+    @NotNull @NotEmpty
     private String name;
-    @NotNull @Min(1)
+    @NotNull @NotEmpty
     private String description;
     private String date;
     private boolean active;

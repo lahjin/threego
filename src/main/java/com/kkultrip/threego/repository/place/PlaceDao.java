@@ -114,4 +114,9 @@ public class PlaceDao implements PlaceRepo{
         return jdbcTemplate.update("update place set name = ?, latitude = ?, longitude = ?, address = ?, description = ?, guide = ? where id = ?",
                 place.getName(), place.getLatitude(), place.getLongitude(), place.getAddress(), place.getDescription(), place.getGuide(), place.getId());
     }
+
+    @Override
+    public int countPlace() {
+        return jdbcTemplate.queryForObject("select count(*) from place where active = true", Integer.class);
+    }
 }

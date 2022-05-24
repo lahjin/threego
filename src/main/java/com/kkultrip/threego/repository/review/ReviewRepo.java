@@ -25,4 +25,6 @@ public interface ReviewRepo {
     List<Review> findByTitlePage(String title, int startOffset, int indexSize);
 
     int updateActive(Long id, boolean active);
+    int countReview();
+    int countRecentlyReview();
 }

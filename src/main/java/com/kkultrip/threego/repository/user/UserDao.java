@@ -69,4 +69,9 @@ public class UserDao implements UserRepo{
                 userRowMapper(), "%" + nickname + "%" ,startOffset, indexSize);
     }
 
+    @Override
+    public int countRecently() {
+        return jdbcTemplate.queryForObject("SELECT count(*) FROM USER where REG_DATE > TIMESTAMPADD(DAY, -7, NOW())", Integer.class);
+    }
+
 }

@@ -82,4 +82,8 @@ public class TourService {
             return tourRepo.findByCategoryIDPage(page.getSearchKeyword(), startOffset, page.getIndexSize());
         return null;
     }
+
+    public int countTour() {
+        return tourRepo.countTour();
+    }
 }

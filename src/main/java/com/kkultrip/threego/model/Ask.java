@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 @Getter @Setter
 @RequiredArgsConstructor
 public class Ask {
@@ -12,6 +15,7 @@ public class Ask {
     private String title;
     private String content;
     private String date;
+    @NotNull @NotEmpty
     private String answer;
     private boolean active;
 }

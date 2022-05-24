@@ -107,6 +107,16 @@ public class ReviewDao implements ReviewRepo{
     }
 
     @Override
+    public int countReview() {
+        return jdbcTemplate.queryForObject("select count(*) from review where active = true", Integer.class);
+    }
+
+    @Override
+    public int countRecentlyReview() {
+        return jdbcTemplate.queryForObject("SELECT count(*) FROM review where DATE > TIMESTAMPADD(DAY, -7, NOW())", Integer.class);
+    }
+
+    @Override
     public int countByTitle(String title) {
         return jdbcTemplate.queryForObject("select count(*) from review where title like ?", Integer.class, "%" + title + "%");
     }

@@ -112,4 +112,9 @@ public class TourDao implements TourRepo {
         return jdbcTemplate.query("select * from tour where category_id like ? order by id desc limit ?, ?",
                 tourRowMapper(), "%" + categoryID + "%" ,startOffset, indexSize);
     }
+
+    @Override
+    public int countTour() {
+        return jdbcTemplate.queryForObject("select count(*) from tour where active = true", Integer.class);
+    }
 }

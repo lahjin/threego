@@ -72,4 +72,8 @@ public class PlaceService {
     public int updateInfo(Place place) {
         return placeRepo.updateById(place);
     }
+
+    public int countPlace() {
+        return placeRepo.countPlace();
+    }
 }

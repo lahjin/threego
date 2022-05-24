@@ -118,4 +118,14 @@ public class AskDao implements AskRepo{
         return jdbcTemplate.query("select * from ask where user_id like ? order by id desc limit ?, ?",
                 askRowMapper(), "%" + user_id + "%" ,startOffset, indexSize);
     }
+
+    @Override
+    public int countRecentlyAsk() {
+        return jdbcTemplate.queryForObject("SELECT count(*) FROM ask where DATE > TIMESTAMPADD(DAY, -7, NOW())", Integer.class);
+    }
+
+    @Override
+    public int countNullAsk() {
+        return jdbcTemplate.queryForObject("select count(*) from ask where answer is null", Integer.class);
+    }
 }

@@ -19,5 +19,5 @@ public interface UserRepo {
     List<User> findByUsernamePage(String title, int startOffset, int indexSize);
 
     List<User> findByNicknamePage(String title, int startOffset, int indexSize);
-
+    int countRecently();
 }

@@ -81,4 +81,12 @@ public class AskService {
             return askRepo.findByUserIDPage(page.getSearchKeyword(), startOffset, page.getIndexSize());
         return null;
     }
+
+    public int countRecentlyAsk() {
+        return askRepo.countRecentlyAsk();
+    }
+
+    public int countNullAsk() {
+        return askRepo.countNullAsk();
+    }
 }

@@ -54,4 +54,8 @@ public class UserService {
             return userRepo.findByNicknamePage(page.getSearchKeyword(), startOffset, page.getIndexSize());
         return null;
     }
+
+    public int countRecently() {
+        return userRepo.countRecently();
+    }
 }
