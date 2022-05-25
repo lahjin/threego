@@ -31,7 +31,8 @@ public class DashboardController {
     }
 
     @GetMapping({"/", "/main"})
-    public String dashboard(Model model) {
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')")
+    public String main(Model model){
         int visitor = loginLogService.countVisitor();
         int allUser = userService.allCount();
         int recentlyUser = userService.countRecently();
@@ -52,11 +53,6 @@ public class DashboardController {
         model.addAttribute("recentlyAsk", recentlyAsk);
         model.addAttribute("nullAsk", nullAsk);
 
-        return "main";
-    }
-
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')")
-    public String main(){
         return "main";
     }
 
