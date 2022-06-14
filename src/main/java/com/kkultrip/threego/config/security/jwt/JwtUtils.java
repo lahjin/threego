@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 @Component
@@ -46,8 +44,8 @@ public class JwtUtils {
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().get("username",String.class);
     }
 
-    public String getUserIdFromJwtToken(String token){
-        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().get("id",String.class);
+    public Long getUserIdFromJwtToken(String token){
+        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().get("id",Long.class);
     }
 
     public boolean validateToken(String token){

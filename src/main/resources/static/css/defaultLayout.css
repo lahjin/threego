@@ -60,6 +60,11 @@ a:visited{
     background-color: white;
 }
 
+.no-search-result{
+    margin: 10px;
+    padding: 5px;
+}
+
 #paging_index{
     display: flex;
 }

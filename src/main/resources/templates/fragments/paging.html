@@ -6,7 +6,8 @@
 </head>
 <body>
     <div class="paging" th:fragment="paging">
-        <ul id="paging_index" th:with="url=${#httpServletRequest.requestURI}">
+        <h3 class="no-search-result" th:if="${page.startPage} == 0">검색 결과가 없습니다.</h3>
+        <ul th:unless="${page.startPage} == 0" id="paging_index" th:with="url=${#httpServletRequest.requestURI}">
             <li th:if="${page.isPrev}"><a th:href="${page.isSearch} ?  @{${url}(pageIndex=${page.pageIndex} - 1, indexSize=${page.indexSize}, searchCondition=${page.searchCondition}, searchKeyword=${page.searchKeyword})} : @{${url}(pageIndex=${page.pageIndex}-1, indexSize=${page.indexSize})}"><</a></li>
             <li th:each="num : ${#numbers.sequence(page.startPage,page.endPage)}">
                 <a th:href="${page.isSearch} ?  @{${url}(pageIndex=${num}, indexSize=${page.indexSize}, searchCondition=${page.searchCondition}, searchKeyword=${page.searchKeyword})} : @{${url}(pageIndex=${num}, indexSize=${page.indexSize})}" th:text="${num}" th:classappend="${num == page.pageIndex} ? 'current_page' : '' "></a>

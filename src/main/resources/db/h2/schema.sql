@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `tour` (
                         `name`	varchar(255)	NOT NULL,
                         `description`	varchar(255)	NOT NULL,
                         `date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
-                        `active`	boolean	NOT NULL	DEFAULT false,
+                        `active`	boolean	NOT NULL	DEFAULT true,
                         `category_id`	bigint	NOT NULL,
                         FOREIGN KEY (category_id)
                         REFERENCES category(id)
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `place` (
                          `longitude`	varchar(255)	NOT NULL,
                          `address`	varchar(255)	NOT NULL,
                          `description`	varchar(255)	NOT NULL,
-                         `guide`	varchar(255)	NOT NULL,
+                         `guide`	varchar(1000)	NOT NULL,
                          `date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
                          `active`	boolean	NOT NULL	DEFAULT true
 );
@@ -87,9 +87,9 @@ CREATE TABLE IF NOT EXISTS `review` (
                           `title`	varchar(255)	NOT NULL,
                           `content`	varchar(255)	NOT NULL,
                           `date`	TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
-                          `count`	int	NOT NULL,
-                          `good`	int	NOT NULL,
-                          `bad`	int	NOT NULL,
+                          `count`	int	NOT NULL DEFAULT 0,
+                          `good`	int	NOT NULL DEFAULT 0,
+                          `bad`	int	NOT NULL DEFAULT 0,
                           `point`	varchar(255)	NOT NULL,
                           `active`	boolean	NOT NULL	DEFAULT TRUE,
                           FOREIGN KEY (user_id)
