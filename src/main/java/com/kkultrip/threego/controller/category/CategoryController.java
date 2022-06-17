@@ -4,6 +4,7 @@ import com.kkultrip.threego.config.mvc.NavList;
 import com.kkultrip.threego.model.Category;
 import com.kkultrip.threego.model.Page;
 import com.kkultrip.threego.service.category.CategoryService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')")
 public class CategoryController {
 
     private final CategoryService categoryService;

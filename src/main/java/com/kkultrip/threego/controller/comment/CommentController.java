@@ -2,8 +2,8 @@ package com.kkultrip.threego.controller.comment;
 
 import com.kkultrip.threego.config.mvc.NavList;
 import com.kkultrip.threego.model.Comment;
-import com.kkultrip.threego.model.Review;
 import com.kkultrip.threego.service.comment.CommentService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')")
 public class CommentController {
 
     private final CommentService commentService;

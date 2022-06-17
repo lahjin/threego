@@ -6,6 +6,7 @@ import com.kkultrip.threego.model.Page;
 import com.kkultrip.threego.model.Review;
 import com.kkultrip.threego.service.comment.CommentService;
 import com.kkultrip.threego.service.review.ReviewService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')")
 public class ReviewController {
 
     private final ReviewService reviewService;
